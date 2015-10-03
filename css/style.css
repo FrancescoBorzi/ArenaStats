@@ -1,0 +1,23 @@
+#search {
+  min-width: 300px;
+}
+
+.results-panel {
+  margin: auto;
+  max-width: 800px;
+  margin-top: 10px;
+}
+
+.template-table {
+  max-width: 400px;
+  margin: auto;
+}
+
+.show-hide-button {
+  cursor: pointer;
+}
+
+.credits {
+  font-size: 12px;
+  font-weight: 200;
+}

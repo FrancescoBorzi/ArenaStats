@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="arenastats">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arena Stats">
+    <meta name="author" content="ShinDarth, Helias">
+
+    <title>Arena Stats</title>
+    <link rel="shortcut icon" href="">
+
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-ui-router.min.js"></script>
+    <script src="js/lib/ui-bootstrap.min.js"></script>
+    <script src="js/lib/loading-bar.min.js"></script>
+    <script src="js/lib/angular-tablesort.js"></script>
+    <script src="js/app/main.js"></script>
+    <script src="js/app/routes.js"></script>
+    <script src="config.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/loading-bar.min.css">
+    <link rel="stylesheet" href="css/tablesort.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--[if IE]>
+<script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container text-center">
+      <p class="h4 text-center">Powered by <a href="https://github.com/ShinDarth/TC-JSON-API">TrinityCore JSON REST API</a></p>
+      <br>
+      <br>
+      <div ui-view></div>
+      <hr>
+      <!-- We worked for free to build this software, please do not remove the credit! -->
+      <p class="text-center credits">Created by <a target="_blank" href="https://github.com/ShinDarth"><strong>ShinDarth</strong></a> && <a target="_blank" href="https://github.com/Helias"><strong>Helias</strong></a></p>
+    </div>
+  </body>
+</html>
