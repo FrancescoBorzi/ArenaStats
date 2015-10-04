@@ -3,7 +3,7 @@
 
 (function () {
   'use strict';
-  var app = angular.module('arenastats', ['ui.router', 'ui.bootstrap', 'chieffancypants.loadingBar', 'tableSort']);
+  var app = angular.module('arenastats', ['ui.bootstrap', 'chieffancypants.loadingBar', 'tableSort']);
 
   app.controller("HomeController", function($scope, $rootScope, $http) {
 
