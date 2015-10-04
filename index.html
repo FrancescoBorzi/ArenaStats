@@ -10,12 +10,10 @@
     <link rel="shortcut icon" href="">
 
     <script src="js/lib/angular.min.js"></script>
-    <script src="js/lib/angular-ui-router.min.js"></script>
     <script src="js/lib/ui-bootstrap.min.js"></script>
     <script src="js/lib/loading-bar.min.js"></script>
     <script src="js/lib/angular-tablesort.js"></script>
     <script src="js/app/main.js"></script>
-    <script src="js/app/routes.js"></script>
     <script src="config.js"></script>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -33,13 +31,33 @@
   <body>
 
     <div class="container text-center">
-      <p class="h4 text-center">Powered by <a href="https://github.com/ShinDarth/TC-JSON-API">TrinityCore JSON REST API</a></p>
-      <br>
-      <br>
-      <div ui-view></div>
-      <hr>
-      <!-- We worked for free to build this software, please do not remove the credit! -->
-      <p class="text-center credits">Created by <a target="_blank" href="https://github.com/ShinDarth"><strong>ShinDarth</strong></a> && <a target="_blank" href="https://github.com/Helias"><strong>Helias</strong></a></p>
+
+      <div>
+        <table class="table table-striped table-bordered" ts-wrapper>
+          <thead>
+            <th class="text-center" ts-criteria="rank|lowercase">Rank</th>
+            <th class="text-center" ts-criteria="name|lowercase">Name</th>
+            <th class="text-center" ts-criteria="captainName|lowercase">Captain</th>
+            <th class="text-center" ts-criteria="rating|parseInt" ts-default="ascending">Rating</th>
+            <th class="text-center" ts-criteria="games|lowercase">Games</th>
+            <th class="text-center" ts-criteria="won|lowercase">Won</th>				
+          </thead>
+          <tbody>
+            <tr ng-repeat="team2 in teams2" ts-repeat>
+              <td><strong>{{ team2.rank }}</strong></td>
+              <td>{{ team2.name }}</td>
+              <td>{{ team2.captainName }}</td>
+              <td>{{ team2.rating }}</td>
+              <td>{{ team2.games }}</td>
+              <td>{{ team2.won }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr>
+    <!-- We worked for free to build this software, please do not remove the credit! -->
+    <p class="text-center credits">Created by <a target="_blank" href="https://github.com/ShinDarth"><strong>ShinDarth</strong></a> && <a target="_blank" href="https://github.com/Helias"><strong>Helias</strong></a></p>
     </div>
   </body>
 </html>

@@ -7,12 +7,12 @@
 
   app.controller("HomeController", function($scope, $rootScope, $http) {
 
-    $http.get( app.api + "arena_team/" )
+    $http.get( app.api + "arena_team/2" )
       .success(function(data, status, header, config) {
-      $scope.teams = data;
+      $scope.teams2 = data;
     })
       .error(function(data, status, header, config) {
-      console.log("Error in ArenaStats $http.get");
+      console.log("Error in ArenaStats $http.get arena_team/2");
     });
 
   });
