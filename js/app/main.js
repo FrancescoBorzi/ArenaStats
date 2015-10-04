@@ -77,6 +77,57 @@
       $scope.apiLoaded = false;
     });
 
+
+    $scope.teamDetails = [];
+
+    $scope.showTeamDetails = function (id) {
+
+      $http.get( app.api + "arena_team/id/" + id )
+        .success(function(data, status, header, config) {
+
+        if (data.length > 0) {
+
+          $scope.showSpecific = true;
+
+          $scope.teamDetails.arenaTeamId     = data[0].arenaTeamId;
+          $scope.teamDetails.name            = data[0].name;
+          $scope.teamDetails.captainGuid     = data[0].captainGuid;
+          $scope.teamDetails.type            = data[0].type;
+          $scope.teamDetails.rating          = data[0].rating;
+          $scope.teamDetails.seasonGames     = data[0].seasonGames;
+          $scope.teamDetails.seasonWins      = data[0].seasonWins;
+          $scope.teamDetails.weekGames       = data[0].weekGames;
+          $scope.teamDetails.weekWins        = data[0].weekWins;
+          $scope.teamDetails.rank            = data[0].rank;
+          $scope.teamDetails.backgroundColor = data[0].backgroundColor;
+          $scope.teamDetails.emblemStyle     = data[0].emblemStyle;
+          $scope.teamDetails.emblemColor     = data[0].emblemColor;
+          $scope.teamDetails.borderStyle     = data[0].borderStyle;
+          $scope.teamDetails.borderColor     = data[0].borderColor;
+          $scope.teamDetails.captainName     = data[0].captainName;
+
+          $scope.teamDetails.members = [];
+
+          $http.get( app.api + "arena_team_member/" + id )
+            .success(function(data, status, header, config) {
+
+            data.forEach(function (member) {
+              $scope.teamDetails.members.push(member);
+            });
+          })
+            .error(function(data, status, header, config) {
+            console.log("Error in ArenaStats $http.get: " + app.api + "arena_team_member/" + id);
+          });
+
+        } else {
+          console.log("Team " + id + " not found.");
+        }
+      })
+        .error(function(data, status, header, config) {
+        console.log("Error in ArenaStats $http.get: " + app.api + "arena_team/id/" + id);
+      });
+
+    };
   });
 
 }());
