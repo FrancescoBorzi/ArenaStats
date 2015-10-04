@@ -1,0 +1,17 @@
+.nav-tabs li {
+  font-weight: bold;
+  font-size: 20px;
+  float: right;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background-color: #17313E;
+}
+
+.alliance td {
+  color: #1A67F4;
+}
+
+.horde td {
+  color: #CD0A0E;
+}
