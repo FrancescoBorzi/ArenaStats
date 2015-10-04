@@ -34,30 +34,40 @@
       <p class="h2 text-center">{{ serverName }} ArenaStats</p>
       <br>
       <div>
-        <table class="table table-striped table-bordered" ts-wrapper>
-          <thead>
-            <th class="text-center" ts-criteria="rank|parseInt">Rank</th>
-            <th class="text-center" ts-criteria="name|lowercase">Name</th>
-            <th class="text-center" ts-criteria="captainName|lowercase">Captain</th>
-            <th class="text-center" ts-criteria="rating|parseInt" ts-default="descending">Rating</th>
-            <th class="text-center" ts-criteria="seasonGames|parseInt">Season Games</th>
-            <th class="text-center" ts-criteria="seasonWon|parseInt">Season Wins</th>
-            <th class="text-center" ts-criteria="weekGames|parseInt">Week Games</th>
-            <th class="text-center" ts-criteria="weekWon|parseInt">Week Wins</th>	
-          </thead>
-          <tbody>
-            <tr ng-repeat="team2 in teams2" ts-repeat>
-              <td><strong>{{ team2.rank }}</strong></td>
-              <td><strong>{{ team2.name }}</strong></td>
-              <td><strong>{{ team2.captainName }}</strong></td>
-              <td><strong>{{ team2.rating }}</strong></td>
-              <td><strong>{{ team2.seasonGames }}</strong></td>
-              <td><strong>{{ team2.seasonWins }} &nbsp; - &nbsp; {{ team2.seasonGames == 0 ? 0 : team2.seasonWins / team2.seasonGames * 100 | number:0 }}%</strong></td>
-              <td><strong>{{ team2.weekGames }}</strong></td>
-              <td><strong>{{ team2.weekWins }} &nbsp; - &nbsp; {{ team2.weekGames == 0 ? 0 : team2.weekWins / team2.weekGames * 100 | number:0 }}%</strong></td>
-            </tr>
-          </tbody>
-        </table>
+        <tabset class="text-center">
+          <tab heading="2v2" active="tabs.tab2">
+            <table class="table table-striped table-bordered" ts-wrapper>
+              <thead>
+                <th class="text-center" ts-criteria="rank|parseInt">Rank</th>
+                <th class="text-center" ts-criteria="name|lowercase">Name</th>
+                <th class="text-center" ts-criteria="captainName|lowercase">Captain</th>
+                <th class="text-center" ts-criteria="rating|parseInt" ts-default="descending">Rating</th>
+                <th class="text-center" ts-criteria="seasonGames|parseInt">Season Games</th>
+                <th class="text-center" ts-criteria="seasonWon|parseInt">Season Wins</th>
+                <th class="text-center" ts-criteria="weekGames|parseInt">Week Games</th>
+                <th class="text-center" ts-criteria="weekWon|parseInt">Week Wins</th>	
+              </thead>
+              <tbody>
+                <tr ng-repeat="team2 in teams2" ts-repeat>
+                  <td><strong>{{ team2.rank }}</strong></td>
+                  <td><strong>{{ team2.name }}</strong></td>
+                  <td><strong>{{ team2.captainName }}</strong></td>
+                  <td><strong>{{ team2.rating }}</strong></td>
+                  <td><strong>{{ team2.seasonGames }}</strong></td>
+                  <td><strong><td>{{ team2.seasonWins }}</strong> &nbsp; ({{ team2.seasonGames == 0 ? 0 : team2.seasonWins / team2.seasonGames * 100 | number:0 }}%)</td>
+                  <td><strong>{{ team2.weekGames }}</strong></td>
+                  <td><strong>{{ team2.weekWins }}</strong> &nbsp; ({{ team2.weekGames == 0 ? 0 : team2.weekWins / team2.weekGames * 100 | number:0 }}%)</td>
+                </tr>
+              </tbody>
+            </table>
+          </tab>
+          <tab heading="3v3" active="tabs.tab3">
+            3v3 TODO
+          </tab>
+          <tab heading="5v5" active="tabs.tab5">
+            5v5 TODO
+          </tab>
+        </tabset>
       </div>
 
       <hr>
