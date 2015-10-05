@@ -10,7 +10,7 @@
 
     $scope.serverName = app.serverName;
     $scope.apiLoaded = true;
-    $scope.showSpecific = false;
+    $scope.showDetails = false;
 
     $scope.tabs = {
       tab2 : true,
@@ -19,6 +19,8 @@
     };
 
     var processTeams = function (teams) {
+      if (!teams) { return; }
+
       teams.forEach(function(team) {
 
         if (team.rank == 0) {
@@ -70,7 +72,7 @@
     $http.get( app.api + "arena_team/type/5" )
       .success(function(data, status, header, config) {
       $scope.teams5 = data;
-      processTeams($scope.teams3);
+      processTeams($scope.teams5);
     })
       .error(function(data, status, header, config) {
       console.log("Error in ArenaStats $http.get: " + app.api + "arena_team/type/3");
@@ -87,7 +89,7 @@
 
         if (data.length > 0) {
 
-          $scope.showSpecific = true;
+          $scope.showDetails = true;
 
           $scope.teamDetails.arenaTeamId     = data[0].arenaTeamId;
           $scope.teamDetails.name            = data[0].name;
