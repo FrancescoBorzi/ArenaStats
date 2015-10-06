@@ -98,8 +98,10 @@
           $scope.teamDetails.rating          = data[0].rating;
           $scope.teamDetails.seasonGames     = data[0].seasonGames;
           $scope.teamDetails.seasonWins      = data[0].seasonWins;
+          $scope.teamDetails.seasonLosses    = data[0].seasonGames - data[0].seasonWins;
           $scope.teamDetails.weekGames       = data[0].weekGames;
           $scope.teamDetails.weekWins        = data[0].weekWins;
+          $scope.teamDetails.weekLosses      = data[0].weekGames - data[0].weekWins;
           $scope.teamDetails.rank            = data[0].rank;
           $scope.teamDetails.backgroundColor = data[0].backgroundColor;
           $scope.teamDetails.emblemStyle     = data[0].emblemStyle;
@@ -107,6 +109,26 @@
           $scope.teamDetails.borderStyle     = data[0].borderStyle;
           $scope.teamDetails.borderColor     = data[0].borderColor;
           $scope.teamDetails.captainName     = data[0].captainName;
+          $scope.teamDetails.captainRace     = data[0].captainRace;
+
+          switch (parseInt($scope.teamDetails.captainRace, 10)) {
+            case 2:
+            case 5:
+            case 6:
+            case 8:
+            case 9:
+            case 10:
+              $scope.teamDetails.captainFaction = "horde";
+              break;
+
+            case 1:
+            case 3:
+            case 4:
+            case 7:
+            case 11:
+              $scope.teamDetails.captainFaction = "alliance";
+              break;
+          }
 
           $scope.teamDetails.members = [];
 

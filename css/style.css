@@ -12,10 +12,18 @@
   background-color: #17313E;
 }
 
-.alliance td {
+.alliance td, .alliance-member {
   color: #1A67F4;
 }
 
-.horde td {
+.horde td, .horde-member {
   color: #CD0A0E;
+}
+
+.team-details td {
+  font-size: 18px;
+}
+
+.text-yellow {
+  color: yellow;
 }
