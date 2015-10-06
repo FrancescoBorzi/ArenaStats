@@ -10,10 +10,12 @@
     <link rel="shortcut icon" href="">
 
     <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-ui-router.min.js"></script>
     <script src="js/lib/ui-bootstrap.min.js"></script>
     <script src="js/lib/loading-bar.min.js"></script>
     <script src="js/lib/angular-tablesort.js"></script>
     <script src="js/app/main.js"></script>
+    <script src="js/app/team-detail.js"></script>
     <script src="config.js"></script>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -38,42 +40,7 @@
         <p class="lead h4 text-danger">ERROR: API not found, please edit your config.js file and set the path of your TrinityCore JSON API istance.</p>
       </div>
 
-      <div ng-hide="showDetails" class="main-container">
-        <tabset class="text-center">
-
-          <tab heading="5v5" active="tabs.tab5">
-            <table class="table table-striped table-bordered table-condensed" ts-wrapper>
-              <thead ng-include="'partials/thead.html'"></thead>
-              <tbody>
-                <tr ng-include="'partials/tr.html'" ng-repeat="team in teams5" ng-class="team.faction" ts-repeat ng-click="showTeamDetails(team.rank)"></tr>
-              </tbody>
-            </table>
-          </tab>
-
-          <tab heading="3v3" active="tabs.tab3">
-            <table class="table table-striped table-bordered table-condensed" ts-wrapper>
-              <thead ng-include="'partials/thead.html'"></thead>
-              <tbody>
-                <tr ng-include="'partials/tr.html'" ng-repeat="team in teams3"  ng-class="team.faction" ts-repeat ng-click="showTeamDetails(team.arenaTeamId)">
-                </tr>
-              </tbody>
-            </table>
-          </tab>
-
-          <tab heading="2v2" active="tabs.tab2">
-            <table class="table table-striped table-bordered table-condensed" ts-wrapper>
-              <thead ng-include="'partials/thead.html'"></thead>
-              <tbody>
-                <tr ng-include="'partials/tr.html'" ng-repeat="team in teams2"  ng-class="team.faction" ts-repeat ng-click="showTeamDetails(team.arenaTeamId)">
-                </tr>
-              </tbody>
-            </table>
-          </tab>
-
-        </tabset>
-      </div>
-
-      <div ng-show="showDetails" ng-include="'partials/team-details.html'"></div>
+      <div ui-view></div>
 
       <hr>
       <!-- We worked for free to build this software, please do not remove the credit! -->

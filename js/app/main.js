@@ -3,19 +3,34 @@
 
 (function () {
   'use strict';
-  var app = angular.module('arenastats', ['ui.bootstrap', 'chieffancypants.loadingBar', 'tableSort']);
+  var app = angular.module('arenastats', ['ui.router', 'ui.bootstrap', 'chieffancypants.loadingBar', 'tableSort']);
 
 
-  app.controller("MainController", function($scope, $http) {
+  app.config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise("/");
+
+    $stateProvider
+      .state('main', {
+      url: '/',
+      controller: 'TeamsController',
+      templateUrl: 'partials/main.html'
+    })
+      .state('team', {
+      url: '/team/:id',
+      controller: 'TeamDetailsController',
+      templateUrl: 'partials/team-details.html'
+    });
+  });
+
+  app.controller("MainController", function($rootScope, $scope, $http, $state) {
 
     $scope.serverName = app.serverName;
     $scope.apiLoaded = true;
-    $scope.showDetails = false;
-    
-    $scope.toggleDetails = function() {
-      $scope.showDetails = !$scope.showDetails;
-    };
 
+  });
+
+  app.controller("TeamsController", function($rootScope, $scope, $http, $state) {
     $scope.tabs = {
       tab2 : true,
       tab3 : false,
@@ -53,10 +68,12 @@
       });
     };
 
+    
     $http.get( app.api + "arena_team/type/2" )
       .success(function(data, status, header, config) {
       $scope.teams2 = data;
       processTeams($scope.teams2);
+      console.log("[INFO] Loaded 2v2 teams");
     })
       .error(function(data, status, header, config) {
       console.log("Error in ArenaStats $http.get: " + app.api + "arena_team/type/2");
@@ -67,102 +84,29 @@
       .success(function(data, status, header, config) {
       $scope.teams3 = data;
       processTeams($scope.teams3);
+      console.log("[INFO] Loaded 3v3 teams");
     })
       .error(function(data, status, header, config) {
       console.log("Error in ArenaStats $http.get: " + app.api + "arena_team/type/3");
       $scope.apiLoaded = false;
     });
+
 
     $http.get( app.api + "arena_team/type/5" )
       .success(function(data, status, header, config) {
       $scope.teams5 = data;
       processTeams($scope.teams5);
+      console.log("[INFO] Loaded 5v5 teams");
     })
       .error(function(data, status, header, config) {
       console.log("Error in ArenaStats $http.get: " + app.api + "arena_team/type/3");
       $scope.apiLoaded = false;
     });
 
-
-    $scope.teamDetails = [];
-
-    $scope.showTeamDetails = function (id) {
-
-      $http.get( app.api + "arena_team/id/" + id )
-        .success(function(data, status, header, config) {
-
-        if (data.length > 0) {
-
-          $scope.toggleDetails();
-
-          $scope.teamDetails.arenaTeamId     = data[0].arenaTeamId;
-          $scope.teamDetails.name            = data[0].name;
-          $scope.teamDetails.captainGuid     = data[0].captainGuid;
-          $scope.teamDetails.type            = data[0].type;
-          $scope.teamDetails.rating          = data[0].rating;
-          $scope.teamDetails.seasonGames     = data[0].seasonGames;
-          $scope.teamDetails.seasonWins      = data[0].seasonWins;
-          $scope.teamDetails.seasonLosses    = data[0].seasonGames - data[0].seasonWins;
-          $scope.teamDetails.weekGames       = data[0].weekGames;
-          $scope.teamDetails.weekWins        = data[0].weekWins;
-          $scope.teamDetails.weekLosses      = data[0].weekGames - data[0].weekWins;
-          $scope.teamDetails.rank            = data[0].rank;
-          $scope.teamDetails.backgroundColor = data[0].backgroundColor;
-          $scope.teamDetails.emblemStyle     = data[0].emblemStyle;
-          $scope.teamDetails.emblemColor     = data[0].emblemColor;
-          $scope.teamDetails.borderStyle     = data[0].borderStyle;
-          $scope.teamDetails.borderColor     = data[0].borderColor;
-          $scope.teamDetails.captainName     = data[0].captainName;
-          $scope.teamDetails.captainRace     = data[0].captainRace;
-
-          switch (parseInt($scope.teamDetails.captainRace, 10)) {
-            case 2:
-            case 5:
-            case 6:
-            case 8:
-            case 9:
-            case 10:
-              $scope.teamDetails.captainFaction = "horde";
-              break;
-
-            case 1:
-            case 3:
-            case 4:
-            case 7:
-            case 11:
-              $scope.teamDetails.captainFaction = "alliance";
-              break;
-          }
-
-          $scope.teamDetails.members = [];
-
-          $http.get( app.api + "arena_team_member/" + id )
-            .success(function(data, status, header, config) {
-
-            data.forEach(function (member) {
-              $scope.teamDetails.members.push(member);
-            });
-
-            $scope.teamDetails.members.forEach(function (member) {
-              member.seasonLosses = member.seasonGames - member.seasonWins;
-              member.weekLosses = member.weekGames - member.weekWins;
-              member.weekNeeded = member.weekGames > 9 ? 0 : 10 - member.weekGames;
-            });
-
-          })
-            .error(function(data, status, header, config) {
-            console.log("Error in ArenaStats $http.get: " + app.api + "arena_team_member/" + id);
-          });
-
-        } else {
-          console.log("Team " + id + " not found.");
-        }
-      })
-        .error(function(data, status, header, config) {
-        console.log("Error in ArenaStats $http.get: " + app.api + "arena_team/id/" + id);
-      });
-
+    $scope.showTeam = function(id) {
+      $state.go('team', {id: id});
     };
+
   });
 
 }());
