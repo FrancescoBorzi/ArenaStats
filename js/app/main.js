@@ -11,6 +11,10 @@
     $scope.serverName = app.serverName;
     $scope.apiLoaded = true;
     $scope.showDetails = false;
+    
+    $scope.toggleDetails = function() {
+      $scope.showDetails = !$scope.showDetails;
+    };
 
     $scope.tabs = {
       tab2 : true,
@@ -89,7 +93,7 @@
 
         if (data.length > 0) {
 
-          $scope.showDetails = true;
+          $scope.toggleDetails();
 
           $scope.teamDetails.arenaTeamId     = data[0].arenaTeamId;
           $scope.teamDetails.name            = data[0].name;
@@ -138,6 +142,13 @@
             data.forEach(function (member) {
               $scope.teamDetails.members.push(member);
             });
+
+            $scope.teamDetails.members.forEach(function (member) {
+              member.seasonLosses = member.seasonGames - member.seasonWins;
+              member.weekLosses = member.weekGames - member.weekWins;
+              member.weekNeeded = member.weekGames > 9 ? 0 : 10 - member.weekGames;
+            });
+
           })
             .error(function(data, status, header, config) {
             console.log("Error in ArenaStats $http.get: " + app.api + "arena_team_member/" + id);

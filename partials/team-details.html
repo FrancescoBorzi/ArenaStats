@@ -1,4 +1,4 @@
-<button class="btn btn-default" ng-click="showDetails = false">&larr; Back</button>
+<button class="btn btn-default" ng-click="toggleDetails()">&larr; Back</button>
 
 <p class="h2 text-center">{{ teamDetails.name }}</p>
 
@@ -84,8 +84,34 @@
       </tbody>
     </table>
   </div>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <th class="text-center" ts-criteria="name|lowercase">Name</th>
+      <th class="text-center" ts-criteria="class|parseInt">&#9679;</th>
+      <th class="text-center" ts-criteria="personalRating|parseInt">Rating</th>
+      <th class="text-center" ts-criteria="seasonGames|parseInt">Season Games</th>
+      <th class="text-center" ts-criteria="seasonWins|parseInt">Season Won</th>
+      <th class="text-center" ts-criteria="seasonLooses|parseInt">Season Lost</th>
+      <th class="text-center" ts-criteria="weekGames|parseInt">Week Games</th>
+      <th class="text-center" ts-criteria="weekWins|parseInt">Week Won</th>
+      <th class="text-center" ts-criteria="weekLooses|parseInt">Week Lost</th>
+      <th class="text-center" ts-criteria="weekNeeded|parseInt">Week Needed</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="member in teamDetails.members" ts-repeat>
+        <td><strong>{{ member.name }}</strong></td>
+        <td><strong>{{ member.class }}</strong></td>
+        <td><strong>{{ member.personalRating }}</strong></td>
+        <td><strong>{{ member.seasonGames }}</strong></td>
+        <td><strong>{{ member.seasonWins }}</strong></td>
+        <td><strong>{{ member.seasonLooses }}</strong></td>
+        <td><strong>{{ member.weekGames }}</strong></td>
+        <td><strong>{{ member.weekWins }}</strong></td>
+        <td><strong>{{ member.weekLooses }}</strong></td>
+        <td><strong>{{ member.weekNeeded }}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
-
-
-
-
