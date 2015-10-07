@@ -4,9 +4,9 @@ This is a simple web application built with [AngularJS](https://angularjs.org/) 
 
 It is based on the [TrinityCore JSON RESTful API](https://github.com/ShinDarth/TC-JSON-API/).
 
-![TrinityCore ArenaStats](https://raw.githubusercontent.com/ShinDarth/ArenaStats/master/screenshot/screenshot1.png "TrinityCore ArenaStats")
+![TrinityCore ArenaStats](https://raw.githubusercontent.com/ShinDarth/ArenaStats/master/screenshots/screenshot1.png "TrinityCore ArenaStats")
 
-![TrinityCore ArenaStats](https://raw.githubusercontent.com/ShinDarth/ArenaStats/master/screenshot/screenshot2.png "TrinityCore ArenaStats")
+![TrinityCore ArenaStats](https://raw.githubusercontent.com/ShinDarth/ArenaStats/master/screenshots/screenshot2.png "TrinityCore ArenaStats")
 
 ## Installation
 
