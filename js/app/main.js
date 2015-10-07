@@ -13,7 +13,7 @@
     $stateProvider
       .state('main', {
       url: '/',
-      controller: 'TeamsController',
+      controller: 'MainController',
       templateUrl: 'partials/main.html'
     })
       .state('team', {
@@ -23,14 +23,14 @@
     });
   });
 
-  app.controller("MainController", function($rootScope, $scope, $http, $state) {
+  app.controller("GlobalController", function($rootScope, $scope, $http, $state) {
 
     $scope.serverName = app.serverName;
     $scope.apiLoaded = true;
 
   });
 
-  app.controller("TeamsController", function($rootScope, $scope, $http, $state) {
+  app.controller("MainController", function($rootScope, $scope, $http, $state) {
     $scope.tabs = {
       tab2 : true,
       tab3 : false,

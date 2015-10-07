@@ -85,33 +85,36 @@
     </table>
   </div>
 
-  <table class="table table-striped table-bordered">
-    <thead>
-      <th class="text-center" disable-ts-criteria="name|lowercase">Name</th>
-      <th class="text-center" disable-ts-criteria="class|parseInt">&#9679;</th>
-      <th class="text-center" disable-ts-criteria="personalRating|parseInt">Rating</th>
-      <th class="text-center" disable-ts-criteria="seasonGames|parseInt">Season Games</th>
-      <th class="text-center" disable-ts-criteria="seasonWins|parseInt">Season Won</th>
-      <th class="text-center" disable-ts-criteria="seasonLooses|parseInt">Season Lost</th>
-      <th class="text-center" disable-ts-criteria="weekGames|parseInt">Week Games</th>
-      <th class="text-center" disable-ts-criteria="weekWins|parseInt">Week Won</th>
-      <th class="text-center" disable-ts-criteria="weekLooses|parseInt">Week Lost</th>
-      <th class="text-center" disable-ts-criteria="weekNeeded|parseInt">Week Needed</th>
-    </thead>
-    <tbody>
-      <tr ng-repeat="member in members">
-        <td><strong>{{ member.name }}</strong></td>
-        <td><strong>{{ member.class }}</strong></td>
-        <td><strong>{{ member.personalRating }}</strong></td>
-        <td><strong>{{ member.seasonGames }}</strong></td>
-        <td><strong>{{ member.seasonWins }}</strong></td>
-        <td><strong>{{ member.seasonLooses }}</strong></td>
-        <td><strong>{{ member.weekGames }}</strong></td>
-        <td><strong>{{ member.weekWins }}</strong></td>
-        <td><strong>{{ member.weekLooses }}</strong></td>
-        <td><strong>{{ member.weekNeeded }}</strong></td>
-      </tr>
-    </tbody>
-  </table>
+  <p class="h4 text-center text-muted">Team Members</p>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered" ts-wrapper>
+      <thead>
+        <th class="text-center" ts-criteria="name|lowercase">Name</th>
+        <th class="text-center" ts-criteria="class|parseInt">&nbsp; &#9679;</th>
+        <th class="text-center" ts-criteria="personalRating|parseInt">Personal Rating</th>
+        <th class="text-center" ts-criteria="seasonGames|parseInt">Season Games</th>
+        <th class="text-center" ts-criteria="seasonWins|parseInt">Season Won</th>
+        <th class="text-center" ts-criteria="seasonLosses|parseInt">Season Lost</th>
+        <th class="text-center" ts-criteria="weekGames|parseInt">Week Games</th>
+        <th class="text-center" ts-criteria="weekWins|parseInt">Week Won</th>
+        <th class="text-center" ts-criteria="weekLosses|parseInt">Week Lost</th>
+        <th class="text-center" ts-criteria="weekNeeded|parseInt">Week Needed</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="member in members" ts-repeat>
+          <td class="{{ teamDetails.captainFaction }}-member"><strong>{{ member.name }}</strong></td>
+          <td><strong><img ng-src="img/class/{{ member.class }}.gif"> <img ng-src="img/race/{{ member.race }}-{{ member.gender }}.gif"></strong></td>
+          <td class="text-yellow"><strong>{{ member.personalRating }}</strong></td>
+          <td class="text-primary"><strong>{{ member.seasonGames }}</strong></td>
+          <td class="text-success"><strong>{{ member.seasonWins }}</strong> &nbsp; ({{ member.seasonGames == 0 ? 0 : member.seasonWins / member.seasonGames * 100 | number:1 }}%)</td>
+          <td class="text-danger"><strong>{{ member.seasonLosses }}</strong> &nbsp; ({{ member.seasonGames == 0 ? 0 : member.seasonLosses / member.seasonGames * 100 | number:1 }}%)</td>
+          <td class="text-primary"><strong>{{ member.weekGames }}</strong></td>
+          <td class="text-success"><strong>{{ member.weekWins }}</strong> &nbsp; ({{ member.weekGames == 0 ? 0 : member.weekWins / member.weekGames * 100 | number:1 }}%)</td>
+          <td class="text-danger"><strong>{{ member.weekLosses }}</strong> &nbsp; ({{ member.weekGames == 0 ? 0 : member.weekLosses / member.weekGames * 100 | number:1 }}%)</td>
+          <td class="text-info"><strong>{{ member.weekNeeded }}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 </div>
