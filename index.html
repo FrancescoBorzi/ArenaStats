@@ -41,7 +41,7 @@
       </div>
 
       <div>
-        <p class="text-center text-success">Next Arena Points distribution time: <strong>{{ NextArenaPointDistributionTime * 1000  | date:'yyyy-MM-dd HH:mm:ss' }}</strong></p>
+        <p class="text-center text-success">Next Arena Points distribution (server time): <strong>{{ NextArenaPointDistributionTime * 1000  | date:'yyyy-MM-dd HH:mm:ss' : 'UTC' }}</strong></p>
       </div>
 
       <div ui-view></div>
