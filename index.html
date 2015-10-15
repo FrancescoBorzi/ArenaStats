@@ -40,6 +40,10 @@
         <p class="lead h4 text-danger">ERROR: API not found, please edit your config.js file and set the path of your TrinityCore JSON API istance.</p>
       </div>
 
+      <div>
+        <p class="text-center text-success">Next Arena Points distribution time: <strong>{{ NextArenaPointDistributionTime * 1000  | date:'yyyy-MM-dd HH:mm:ss' }}</strong></p>
+      </div>
+
       <div ui-view></div>
 
       <hr>

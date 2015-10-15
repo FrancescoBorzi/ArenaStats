@@ -28,6 +28,19 @@
     $scope.serverName = app.serverName;
     $scope.apiLoaded = true;
 
+    $http.get( app.api + "search/worldstates?comment=NextArenaPointDistributionTime" )
+      .success(function(data, status, header, config) {
+      if (data.length == 1) { 
+        $scope.NextArenaPointDistributionTime = data[0].value;
+        console.log("[INFO] Loaded NextArenaPointDistributionTime");
+      } else {
+        console.log("[ERROR] Problems while retrieving NextArenaPointDistributionTime");
+      }
+    })
+      .error(function(data, status, header, config) {
+      console.log("Error in ArenaStats $http.get: " + app.api + "search/worldstates?comment=NextArenaPointDistributionTime");
+      $scope.apiLoaded = false;
+    });
   });
 
   app.controller("MainController", function($rootScope, $scope, $http, $state) {
