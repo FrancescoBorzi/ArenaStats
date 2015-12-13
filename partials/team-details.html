@@ -92,6 +92,7 @@
         <th class="text-center" ts-criteria="name|lowercase">Name</th>
         <th class="text-center" ts-criteria="class|parseInt">&nbsp; &#9679;</th>
         <th class="text-center" ts-criteria="personalRating|parseInt">Personal Rating</th>
+        <th class="text-center" ts-criteria="matchmakerRating|parseInt">MM Rating</th>
         <th class="text-center" ts-criteria="seasonGames|parseInt">Season Games</th>
         <th class="text-center" ts-criteria="seasonWins|parseInt">Season Won</th>
         <th class="text-center" ts-criteria="seasonLosses|parseInt">Season Lost</th>
@@ -105,6 +106,7 @@
           <td class="{{ teamDetails.captainFaction }}-member"><strong>{{ member.name }}</strong></td>
           <td><strong><img ng-src="img/class/{{ member.class }}.gif"> <img ng-src="img/race/{{ member.race }}-{{ member.gender }}.gif"></strong></td>
           <td class="text-yellow"><strong>{{ member.personalRating }}</strong></td>
+          <td class="text-warning"><strong>{{ member.matchmakerRating }}</strong></td>
           <td class="text-primary"><strong>{{ member.seasonGames }}</strong></td>
           <td class="text-success"><strong>{{ member.seasonWins }}</strong> &nbsp; ({{ member.seasonGames == 0 ? 0 : member.seasonWins / member.seasonGames * 100 | number:1 }}%)</td>
           <td class="text-danger"><strong>{{ member.seasonLosses }}</strong> &nbsp; ({{ member.seasonGames == 0 ? 0 : member.seasonLosses / member.seasonGames * 100 | number:1 }}%)</td>
