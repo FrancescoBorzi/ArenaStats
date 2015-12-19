@@ -26,4 +26,4 @@ and the name of your server:
 
 ### License
 
-The TrinityCore Server Status is open-sourced software licensed under the [GNU GPL license](https://github.com/ShinDarth/ArenaStats/blob/master/LICENSE).
+ArenaStats is open-sourced software licensed under the [GNU AGPL license](https://github.com/ShinDarth/ArenaStats/blob/master/LICENSE).
