@@ -24,6 +24,16 @@ and the name of your server:
 
 `app.serverName = "YourServerName";`
 
+
+## Contribute
+
+You can help us [opening a new issue](https://github.com/ShinDarth/ArenaStats/issues/new) to report a bug or a suggestion
+
+or you can donate to support us
+
+[![Donate](https://www.paypal.com/en_GB/i/btn/btn_donateCC_LG.gif "Donate")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=52AZFFD86N39Q)
+
+
 ### License
 
 ArenaStats is open-sourced software licensed under the [GNU AGPL license](https://github.com/ShinDarth/ArenaStats/blob/master/LICENSE).
